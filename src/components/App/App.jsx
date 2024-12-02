@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
-import css from './App.module.css'
-import contactsData from "../../contactsData.json"
-import ContactForm from "../ContactForm/ContactForm.jsx"
-import SearchBox from "../SearchBox/SearchBox.jsx"
-import ContactList from "../ContactList/ContactList.jsx"
+import { useState, useEffect } from 'react';
+import css from './App.module.css';
+import contactsData from "../../contactsData.json";
+import ContactForm from "../ContactForm/ContactForm.jsx";
+import SearchBox from "../SearchBox/SearchBox.jsx";
+import ContactList from "../ContactList/ContactList.jsx";
 
 export default function App() {
   const [contacts, setContacts] = useState(() => {
@@ -20,18 +20,12 @@ export default function App() {
     window.localStorage.setItem("saved-contacts", JSON.stringify(contacts))
   }, [contacts])
 
-  const addContacts = (newContact) => {
-    setContacts((prevContacts) => {
-      return [...prevContacts, newContact]
-    })
-  }
-
   const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase()))
 
   return (
     <div className={css.container}>
       <h1>Phonebook</h1>
-      <ContactForm onAdd={addContacts} />
+      <ContactForm />
       <SearchBox value={filter} onFilter={setFilter} />
       <ContactList contacts={filteredContacts} />
     </div>
