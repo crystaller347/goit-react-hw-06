@@ -14,20 +14,16 @@ export default function App() {
     return contactsData;
   })
 
-  const [filter, setFilter] = useState("")
-
   useEffect(() => {
     window.localStorage.setItem("saved-contacts", JSON.stringify(contacts))
   }, [contacts])
-
-  const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase()))
 
   return (
     <div className={css.container}>
       <h1>Phonebook</h1>
       <ContactForm />
-      <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList contacts={filteredContacts} />
+      <SearchBox />
+      <ContactList />
     </div>
   )
 }
