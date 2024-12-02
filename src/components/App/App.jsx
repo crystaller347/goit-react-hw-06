@@ -11,7 +11,7 @@ export default function App() {
     if (savedContacts !== null) {
       return JSON.parse(savedContacts)
     }
-    return contactsData
+    return contactsData;
   })
 
   const [filter, setFilter] = useState("")
@@ -26,12 +26,6 @@ export default function App() {
     })
   }
 
-  const deleteContacts = (contactId) => {
-    setContacts((prevContacts) => {
-      return prevContacts.filter((contact) => contact.id !== contactId)
-    })
-  }
-
   const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase()))
 
   return (
@@ -39,7 +33,7 @@ export default function App() {
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContacts} />
       <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList contacts={filteredContacts} onDelete={deleteContacts} />
+      <ContactList contacts={filteredContacts} />
     </div>
   )
 }
